@@ -15,6 +15,11 @@ import java.util.UUID;
 @RequestMapping("/api/v1")
 public class OrderController {
     private OrderProducer orderProducer;
+
+    /**
+     * Constructor
+     * @param orderProducer
+     */
     public OrderController( OrderProducer orderProducer)
     {
         this.orderProducer=orderProducer;

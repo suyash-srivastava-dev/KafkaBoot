@@ -26,7 +26,9 @@ public class TransactionConsumer {
         orders.setPrice(event.getOrder().getPrice());
         orders.setQty(event.getOrder().getQty());
         orders.setItemName(event.getOrder().getItemName());
-
+        /**
+         * Saving the transformed order to database
+         */
         transactionRepo.save(orders);
     }
 }

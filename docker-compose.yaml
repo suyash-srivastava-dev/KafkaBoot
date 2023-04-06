@@ -34,7 +34,7 @@ services:
     image: postgres
     environment:
       POSTGRES_USER: root
-      POSTGRES_PASSWORD: postgres
+      POSTGRES_PASSWORD: passwordTime
       PGDATA: /data/postgres
     volumes:
       - postgres:/data/postgres
@@ -49,11 +49,10 @@ services:
     image: dpage/pgadmin4
     environment:
       PGADMIN_DEFAULT_EMAIL: root@gmail.com
-      PGADMIN_DEFAULT_PASSWORD: postgres
+      PGADMIN_DEFAULT_PASSWORD: passwordTime
       PGADMIN_CONFIG_SERVER_MODE: 'False'
     volumes:
       - pgadmin:/var/lib/pgadmin
-
     ports:
       - "5050:80"
     networks:

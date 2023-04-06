@@ -13,20 +13,25 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class OrderProducer {
-//    private static final Logger LOGGER= (Logger) LoggerFactory.getLogger(OrderProducer.class);
     @Autowired
     private NewTopic topic;
 
     private KafkaTemplate<String, Order> kafkaTemplate;
 
+    /**
+     Constructor
+     */
     public OrderProducer(NewTopic topic, KafkaTemplate<String, Order> kafkaTemplate) {
         this.topic = topic;
         this.kafkaTemplate = kafkaTemplate;
     }
 
+
+    /**
+     Send Message to Kafka
+     */
     public void sendMessage(OrderEvent event)
     {
-//        LOGGER.info(String.format("Order sent ==> %s",event.toString()));
         System.out.println("Order sent ==> "+event.toString());
         Message<OrderEvent> message= MessageBuilder.withPayload(event).setHeader(KafkaHeaders.TOPIC,topic.name()).build();
         kafkaTemplate.send(message);
